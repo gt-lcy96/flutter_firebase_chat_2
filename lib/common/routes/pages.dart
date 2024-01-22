@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_chat/common/middlewares/middlewares.dart';
+import 'package:firebase_chat/pages/welcome/bindings.dart';
+import 'package:firebase_chat/pages/welcome/view.dart';
 
 import 'package:get/get.dart';
-
 import 'routes.dart';
+
 
 class AppPages {
   static const INITIAL = AppRoutes.INITIAL;
@@ -13,7 +15,7 @@ class AppPages {
   static List<String> history = [];
 
   static final List<GetPage> routes = [
-   /*
+   
     GetPage(
       name: AppRoutes.INITIAL,
       page: () => WelcomePage(),
@@ -22,6 +24,7 @@ class AppPages {
         RouteWelcomeMiddleware(priority: 1),
       ],
     ),
+  /*
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => SignInPage(),
