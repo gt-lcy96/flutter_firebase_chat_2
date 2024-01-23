@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_chat/common/middlewares/middlewares.dart';
-import 'package:firebase_chat/pages/welcome/bindings.dart';
-import 'package:firebase_chat/pages/welcome/view.dart';
+import 'package:firebase_chat/pages/welcome/index.dart';
 
 import 'package:get/get.dart';
 import 'routes.dart';
