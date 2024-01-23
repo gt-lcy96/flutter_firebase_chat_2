@@ -88,6 +88,13 @@ class WelcomePage extends GetView<WelcomeController> {
                   dotsCount: 3,
                   reversed: false,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  decorator: DotsDecorator(
+                    size: Size.square(9),
+                    activeSize: Size(18.0, 9.0),
+                    activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)
+                    )
+                  )
                 ),
                 
                 )
