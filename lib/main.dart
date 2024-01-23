@@ -3,6 +3,7 @@ import 'package:firebase_chat/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'helper/dependencies.dart' as dep;
 
 void main() async {
@@ -20,16 +21,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ScreenUtilInit(
+      child: GetMaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes,
+        // home: Scaffold(
+        //     body:
+        //         Center(child: Container(child: Text('Flutter Demo Home Page')))),
       ),
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      // home: Scaffold(
-      //     body:
-      //         Center(child: Container(child: Text('Flutter Demo Home Page')))),
     );
   }
 }
