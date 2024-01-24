@@ -1,13 +1,14 @@
+import 'package:firebase_chat/common/store/user.dart';
 import 'package:get/get.dart';
 import 'package:firebase_chat/common/store/config.dart';
 import 'package:firebase_chat/common/services/storage.dart';
 
 
 Future<void> init() async {
+  final storageService = Get.put(StorageService());
+  await storageService.init();
 
-  Get.lazyPut(() => ConfigStore());
-  Get.lazyPut(()=>StorageService());
+  Get.put(ConfigStore());
+  Get.put(UserStore());
   // Get.lazyPut(() => OrderController(orderRepo: Get.find()));
-  // Get.lazyPut(()=>StorageService(_prefs: Get.find()));
-  await Get.put(StorageService()).init();
 }
