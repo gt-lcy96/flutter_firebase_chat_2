@@ -1,3 +1,5 @@
+import 'package:firebase_chat/common/values/values.dart';
+
 import 'index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,14 +10,49 @@ class ApplicationPage extends GetView<ApplicationController> {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-          ],
+    Widget _buildPageView() {
+      return PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: controller.pageController,
+        onPageChanged: controller.handlePageChanged,
+        children: [
+          Center(
+            child: Container(
+              child: Text("chat"),
+            ),
+          ),
+          Center(
+            child: Container(
+              child: Text("contact"),
+            ),
+          ),
+          Center(
+            child: Container(
+              child: Text("profile"),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget _buildBottomNavigationBar() {
+      return Obx(
+        () => BottomNavigationBar(
+          items: controller.bottomTabs,
+          currentIndex: controller.state.page,
+          type: BottomNavigationBarType.fixed,
+          onTap: controller.handleNavBarTap,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          unselectedItemColor: AppColors.tabBarElement,
+          selectedItemColor: AppColors.thirdElementText,
         ),
-      ),
+      );
+    }
+
+    return Scaffold(
+      body: _buildPageView(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }
