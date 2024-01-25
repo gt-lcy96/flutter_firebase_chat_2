@@ -6,6 +6,7 @@ import 'package:firebase_chat/pages/welcome/index.dart';
 import 'package:firebase_chat/pages/sign_in/index.dart';
 import 'package:firebase_chat/pages/application/index.dart';
 import 'package:firebase_chat/pages/contact/index.dart';
+import 'package:firebase_chat/pages/chat/index.dart';
 
 import 'package:get/get.dart';
 import 'routes.dart';
@@ -48,13 +49,13 @@ class AppPages {
     // 首页
     GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),
 
+    GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
   /*
     //消息
     GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
     //我的
     GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
     //聊天详情
-    GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
 
     GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),*/
   ];
