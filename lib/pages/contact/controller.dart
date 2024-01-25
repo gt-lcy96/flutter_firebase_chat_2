@@ -17,16 +17,20 @@ class ContactController extends GetxController {
   }
 
   asyncLoadAllData() async {
+    // print('asyncLoadAllData - called');
     var usersbase = await db
         .collection("users")
-        .where("id", isNotEqualTo: token)
+        // .where("id", isNotEqualTo: token)
         .withConverter(
             fromFirestore: UserData.fromFirestore,
             toFirestore: (UserData userdata, options) => userdata.toFirestore())
         .get();
 
+    print("usersbase.docs:  ${usersbase.docs}");
     for(var doc in usersbase.docs) {
+      // print("doc.data():  ${doc.data()}");
       state.contactList.add(doc.data());
     }
+    print("state.contactList:  ${state.contactList.length}");
   }
 }

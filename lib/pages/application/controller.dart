@@ -1,9 +1,12 @@
 import 'package:firebase_chat/common/values/values.dart';
+import 'package:firebase_chat/pages/contact/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'index.dart';
 
 class ApplicationController extends GetxController {
+  final contactController = Get.put(ContactController());
+  
   final state = ApplicationState();
   ApplicationController();
 
@@ -67,6 +70,7 @@ class ApplicationController extends GetxController {
   }
 
   void handleNavBarTap(int index) {
+    state.page = index;
     pageController.jumpToPage(index);
   }
 }
