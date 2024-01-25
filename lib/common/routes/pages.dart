@@ -5,6 +5,7 @@ import 'package:firebase_chat/common/middlewares/middlewares.dart';
 import 'package:firebase_chat/pages/welcome/index.dart';
 import 'package:firebase_chat/pages/sign_in/index.dart';
 import 'package:firebase_chat/pages/application/index.dart';
+import 'package:firebase_chat/pages/contact/index.dart';
 
 import 'package:get/get.dart';
 import 'routes.dart';
@@ -42,10 +43,12 @@ class AppPages {
         // RouteAuthMiddleware(priority: 1),
       ],
     ),
-/*
+
     // 最新路由
     // 首页
     GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),
+
+  /*
     //消息
     GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
     //我的
