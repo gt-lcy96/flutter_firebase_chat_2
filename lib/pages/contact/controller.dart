@@ -20,7 +20,7 @@ class ContactController extends GetxController {
     // print('asyncLoadAllData - called');
     var usersbase = await db
         .collection("users")
-        // .where("id", isNotEqualTo: token)
+        .where("id", isNotEqualTo: token)
         .withConverter(
             fromFirestore: UserData.fromFirestore,
             toFirestore: (UserData userdata, options) => userdata.toFirestore())
