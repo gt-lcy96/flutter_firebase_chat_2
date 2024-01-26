@@ -1,5 +1,6 @@
 import 'package:firebase_chat/common/values/values.dart';
 import 'package:firebase_chat/pages/message/chat/index.dart';
+import 'package:firebase_chat/pages/message/chat/widgets/chat_left_item.dart';
 import 'package:firebase_chat/pages/message/chat/widgets/chat_right_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class ChatList extends GetView<ChatController> {
                         if (controller.user_id == item.uid) {
                           return ChatRightItem(item);
                         }
+                        return ChatLeftItem(item);
                       }, childCount: controller.state.msgContentList.length),
                     ))
               ])),
