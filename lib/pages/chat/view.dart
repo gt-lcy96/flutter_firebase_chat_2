@@ -51,7 +51,9 @@ class ChatPage extends GetView<ChatController> {
                     ),
                   ),
                 ))),
-            SizedBox(width: 15.w,),
+            SizedBox(
+              width: 15.w,
+            ),
             Container(
               width: 180.w,
               padding: EdgeInsets.only(top: 0.w, bottom: 0.w, right: 0.w),
@@ -62,32 +64,32 @@ class ChatPage extends GetView<ChatController> {
                     child: GestureDetector(
                         onTap: () {},
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                          Text(
-                            controller.state.to_name.value,
-                            overflow: TextOverflow.clip,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontFamily: 'Avenir',
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryBackground,
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                          Text(
-                            "unknown location",
-                            overflow: TextOverflow.clip,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontFamily: 'Avenir',
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.primaryBackground,
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                        ])))
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                controller.state.to_name.value,
+                                overflow: TextOverflow.clip,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontFamily: 'Avenir',
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.primaryBackground,
+                                  fontSize: 16.sp,
+                                ),
+                              ),
+                              Text(
+                                "unknown location",
+                                overflow: TextOverflow.clip,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontFamily: 'Avenir',
+                                  fontWeight: FontWeight.normal,
+                                  color: AppColors.primaryBackground,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ])))
               ]),
             ),
           ])),
@@ -97,10 +99,69 @@ class ChatPage extends GetView<ChatController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
-      body: Center(
-        child: Text("Chat"),
-      ),
-    );
+        appBar: _buildAppBar(),
+        body: SafeArea(
+          child: ConstrainedBox(
+            constraints: BoxConstraints.expand(),
+            child: Stack(children: [
+              Positioned(
+                  bottom: 0.h,
+                  height: 50.h,
+                  child: Container(
+                    width: 360.w,
+                    height: 50.h,
+                    color: AppColors.primaryBackground,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 217.w,
+                          height: 50.h,
+                          child: TextField(
+                            keyboardType: TextInputType.multiline,
+                            maxLines: 3,
+                            controller: controller.textController,
+                            autofocus: false,
+                            focusNode: controller.contentNode,
+                            decoration:
+                                InputDecoration(hintText: "Send messages..."),
+                          ),
+                        ),
+                        Container(
+                          height: 30.h,
+                          width: 30.w,
+                          margin: EdgeInsets.only(left: 5.w),
+                          child: GestureDetector(
+                            child: Icon(
+                              Icons.photo_outlined,
+                              size: 35.w,
+                              color: Colors.blue,
+                            ),
+                            onTap: () {},
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.only(left: 10.w, top: 5.h),
+                            width: 85.w,
+                            height: 35.h,
+                            child: ElevatedButton(
+                              child: const Text("Send"),
+                              onPressed: () {
+                                controller.sendMessage();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      4.0),
+                                ),
+                                primary: Colors.blue // Adjust the radius as needed
+                              ),
+                            ))
+                      ],
+                    ),
+                  ))
+            ]),
+          ),
+        ));
   }
 }
