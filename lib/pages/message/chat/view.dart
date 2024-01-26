@@ -1,5 +1,6 @@
 import 'package:firebase_chat/common/values/values.dart';
 import 'package:firebase_chat/common/widgets/widgets.dart';
+import 'package:firebase_chat/pages/message/chat/widgets/chat_list.dart';
 
 import 'index.dart';
 import 'package:flutter/material.dart';
@@ -97,6 +98,7 @@ class ChatPage extends GetView<ChatController> {
           child: ConstrainedBox(
             constraints: BoxConstraints.expand(),
             child: Stack(children: [
+              ChatList(),
               Positioned(
                   bottom: 0.h,
                   height: 50.h,

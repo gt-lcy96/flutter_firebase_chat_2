@@ -61,6 +61,13 @@ class ChatController extends GetxController {
     );
   }
 
+  @override
+  void dispose() {
+    msgScrolling.dispose();
+    listener.cancel();
+    super.dispose();
+  }
+
   sendMessage() async {
     String sendContent = textController.text;
     final content = Msgcontent(
