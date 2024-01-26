@@ -6,7 +6,7 @@ import 'package:firebase_chat/pages/welcome/index.dart';
 import 'package:firebase_chat/pages/sign_in/index.dart';
 import 'package:firebase_chat/pages/application/index.dart';
 import 'package:firebase_chat/pages/contact/index.dart';
-import 'package:firebase_chat/pages/chat/index.dart';
+import 'package:firebase_chat/pages/message/chat/index.dart';
 
 import 'package:get/get.dart';
 import 'routes.dart';

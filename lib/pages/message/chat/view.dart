@@ -17,15 +17,8 @@ class ChatPage extends GetView<ChatController> {
       elevation: 0,
       flexibleSpace: Container(
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-        colors: [
-          Color.fromARGB(255, 176, 106, 231),
-          Color.fromARGB(255, 166, 112, 231),
-          Color.fromARGB(255, 131, 123, 231),
-          Color.fromARGB(255, 104, 132, 231),
-        ],
-        transform: GradientRotation(90),
-      ))),
+              gradient: AppColors.chatGradient,
+              )),
       title: Container(
           padding: EdgeInsets.only(top: 0.w, bottom: 0.w, right: 0.w),
           child: Row(children: [

@@ -15,6 +15,7 @@ class ChatController extends GetxController {
   FocusNode contentNode = FocusNode();
   final user_id = UserStore.to.token;
   final db = FirebaseFirestore.instance;
+  var listener;
 
   @override
   void onInit() {
@@ -24,6 +25,40 @@ class ChatController extends GetxController {
     state.to_uid.value = data['to_uid'] ?? "";
     state.to_name.value = data['to_name'] ?? "";
     state.to_avatar.value = data['to_avatar'] ?? "";
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    var messages = db
+        .collection("message")
+        .doc(doc_id)
+        .collection("msglist")
+        .withConverter(
+            fromFirestore: Msgcontent.fromFirestore,
+            toFirestore: (Msgcontent msgcontent, options) =>
+                msgcontent.toFirestore())
+        .orderBy("addtime", descending: true);
+    state.msgContentList.clear();
+    listener = messages.snapshots().listen((event) {
+      for (var change in event.docChanges) {
+        switch (change.type) {
+          case DocumentChangeType.added:
+            if (change.doc.data() != null) {
+              state.msgContentList.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            break;
+        }
+      }
+    },
+    onError: (error) => print("Listen failed: $error")
+
+    
+    );
   }
 
   sendMessage() async {
