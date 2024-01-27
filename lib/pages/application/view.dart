@@ -1,5 +1,6 @@
 import 'package:firebase_chat/common/values/values.dart';
 import 'package:firebase_chat/pages/contact/index.dart';
+import 'package:firebase_chat/pages/message/index.dart';
 
 import 'index.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +18,7 @@ class ApplicationPage extends GetView<ApplicationController> {
         controller: controller.pageController,
         onPageChanged: controller.handlePageChanged,
         children: [
-          Center(
-            child: Container(
-              child: Text("chat"),
-            ),
-          ),
+          MessagePage(),
           ContactPage(),
           Center(
             child: Container(
