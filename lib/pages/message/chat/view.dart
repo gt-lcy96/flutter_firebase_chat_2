@@ -18,8 +18,8 @@ class ChatPage extends GetView<ChatController> {
       elevation: 0,
       flexibleSpace: Container(
           decoration: const BoxDecoration(
-              gradient: AppColors.chatGradient,
-              )),
+        gradient: AppColors.chatGradient,
+      )),
       title: Container(
           padding: EdgeInsets.only(top: 0.w, bottom: 0.w, right: 0.w),
           child: Row(children: [
@@ -90,6 +90,30 @@ class ChatPage extends GetView<ChatController> {
     );
   }
 
+  void _showPicker(context) {
+    showModalBottomSheet(context: context, builder: (BuildContext bc){
+      return SafeArea(
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: Icon(Icons.photo_library),
+              title: Text("Gallery"),
+              onTap: () {
+                controller.imgFromGallery();
+                Get.back();
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.photo_camera),
+              title: Text("Camera"),
+              onTap: () {},
+            )
+          ]
+        )
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +156,9 @@ class ChatPage extends GetView<ChatController> {
                               size: 35.w,
                               color: Colors.blue,
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              _showPicker(context);
+                            },
                           ),
                         ),
                         Container(
@@ -145,12 +171,12 @@ class ChatPage extends GetView<ChatController> {
                                 controller.sendMessage();
                               },
                               style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      4.0),
-                                ),
-                                primary: Colors.blue // Adjust the radius as needed
-                              ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4.0),
+                                  ),
+                                  primary:
+                                      Colors.blue // Adjust the radius as needed
+                                  ),
                             ))
                       ],
                     ),

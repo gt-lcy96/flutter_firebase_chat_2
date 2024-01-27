@@ -94,6 +94,7 @@ dev_dependencies:
 
   # 路径查询
   path_provider: ^2.0.9
+  path: ^1.8.3
 
   # permission 权限
   permission_handler: ^10.2.0
