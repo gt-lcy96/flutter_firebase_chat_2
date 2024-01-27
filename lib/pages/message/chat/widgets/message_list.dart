@@ -22,24 +22,26 @@ class MessageList extends GetView<MessageController> {
                 Container(
                   padding: EdgeInsets.only(top: 0.h, left: 0.w, right: 15.w),
                   child: SizedBox(
-                      width: 54.w,
-                      height: 54.h,
-                      child: CachedNetworkImage(
-                        imageUrl: item.data().from_uid == controller.token
-                            ? item.data().to_avatar!
-                            : item.data().from_avatar!,
-                        imageBuilder: (context, imageProvider) => Container(
-                          width: 54.w,
-                          height: 54.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular((54))),
+                    width: 54.w,
+                    height: 54.h,
+                    child: CachedNetworkImage(
+                      imageUrl: item.data().from_uid == controller.token
+                          ? item.data().to_avatar!
+                          : item.data().from_avatar!,
+                      imageBuilder: (context, imageProvider) => Container(
+                        width: 54.w,
+                        height: 54.h,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular((54))),
                             image: DecorationImage(
-                              image: imageProvider,
-                              fit: BoxFit.cover
-                            )
-                          ),
-                        ),
-                      )),
+                                image: imageProvider, fit: BoxFit.cover)),
+                      ),
+                      errorWidget: (context, url, error) => Image(
+                        image: AssetImage('assets/images/feature-1.png'),
+                      ),
+                    ),
+                  ),
                 )
               ])),
     );
