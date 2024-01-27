@@ -1,3 +1,5 @@
+import 'package:firebase_chat/common/utils/utils.dart';
+import 'package:firebase_chat/common/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_chat/pages/message/index.dart';
@@ -42,7 +44,78 @@ class MessageList extends GetView<MessageController> {
                       ),
                     ),
                   ),
-                )
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 0.h, left: 0.w, right: 15.w),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        width: 1,
+                        color: Color(0xffe5e5e5),
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                            width: 180.w,
+                            height: 54.h,
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item.data().from_uid == controller.token
+                                        ? item.data().to_name!
+                                        : item.data().from_name!,
+                                    overflow: TextOverflow.clip,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.thirdElement,
+                                      fontSize: 16.sp,
+                                    ),
+                                  ),
+                                  Text(
+                                    item.data().last_msg ?? "",
+                                    overflow: TextOverflow.clip,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontWeight: FontWeight.normal,
+                                      color: AppColors.thirdElement,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                ])),
+                        SizedBox(
+                          width: 60.w,
+                          height: 54.w,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                duTimeLineFormat(
+                                  (item.data().last_time as Timestamp).toDate()
+                                ),
+                                overflow: TextOverflow.clip,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontFamily: 'Avenir',
+                                  fontWeight: FontWeight.normal,
+                                  color: AppColors.thirdElementText,
+                                  fontSize: 12.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                ),
               ])),
     );
   }
