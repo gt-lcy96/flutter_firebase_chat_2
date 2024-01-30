@@ -59,7 +59,7 @@ class ChatPage extends GetView<ChatController> {
                         onTap: () {},
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 controller.state.to_name.value,
@@ -70,17 +70,6 @@ class ChatPage extends GetView<ChatController> {
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.primaryBackground,
                                   fontSize: 16.sp,
-                                ),
-                              ),
-                              Text(
-                                "unknown location",
-                                overflow: TextOverflow.clip,
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontFamily: 'Avenir',
-                                  fontWeight: FontWeight.normal,
-                                  color: AppColors.primaryBackground,
-                                  fontSize: 14.sp,
                                 ),
                               ),
                             ])))
