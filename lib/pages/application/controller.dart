@@ -1,6 +1,7 @@
 import 'package:firebase_chat/common/values/values.dart';
 import 'package:firebase_chat/pages/contact/controller.dart';
 import 'package:firebase_chat/pages/message/index.dart';
+import 'package:firebase_chat/pages/profile/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'index.dart';
@@ -9,7 +10,7 @@ class ApplicationController extends GetxController {
   // init controller for different page View
   final contactController = Get.put(ContactController());
   final messageController = Get.put(MessageController());
-
+  final profileController = Get.put(ProfileController());
   
   final state = ApplicationState();
   ApplicationController();
