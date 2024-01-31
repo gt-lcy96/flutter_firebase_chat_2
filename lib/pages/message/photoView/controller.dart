@@ -7,5 +7,9 @@ class PhotoImageViewController extends GetxController{
   @override
   void onInit() {
     super.onInit();
+    var data = Get.parameters;
+    if(data['url'] != null) {
+      state.url.value = data['url']!;
+    }
   }
 }
