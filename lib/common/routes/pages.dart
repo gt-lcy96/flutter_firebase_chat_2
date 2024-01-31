@@ -7,6 +7,7 @@ import 'package:firebase_chat/pages/application/index.dart';
 import 'package:firebase_chat/pages/contact/index.dart';
 import 'package:firebase_chat/pages/message/chat/index.dart';
 import 'package:firebase_chat/pages/message/photoView/index.dart';
+import 'package:firebase_chat/pages/profile/index.dart';
 
 
 import 'package:get/get.dart';
@@ -21,7 +22,7 @@ class AppPages {
   static final List<GetPage> routes = [
     GetPage(
       name: AppRoutes.INITIAL,
-      page: () => WelcomePage(),
+      page: () => const WelcomePage(),
       binding: WelcomeBinding(),
       middlewares: [
         RouteWelcomeMiddleware(priority: 1),
@@ -30,14 +31,14 @@ class AppPages {
 
     GetPage(
       name: AppRoutes.SIGN_IN,
-      page: () => SignInPage(),
+      page: () => const SignInPage(),
       binding: SignInBinding(),
     ),
 
     // check if needed to login or not
     GetPage(
       name: AppRoutes.Application,
-      page: () => ApplicationPage(),
+      page: () => const ApplicationPage(),
       binding: ApplicationBinding(),
       middlewares: [
         // RouteAuthMiddleware(priority: 1),
@@ -48,21 +49,22 @@ class AppPages {
     // 首页
     GetPage(
         name: AppRoutes.Contact,
-        page: () => ContactPage(),
+        page: () => const ContactPage(),
         binding: ContactBinding()),
 
     GetPage(
-        name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
+        name: AppRoutes.Chat, page: () => const ChatPage(), binding: ChatBinding()),
 
     GetPage(
         name: AppRoutes.Photoimgview,
-        page: () => PhotoImageViewPage(),
+        page: () => const PhotoImageViewPage(),
         binding: PhotoImageViewBinding()),
+
+    GetPage(name: AppRoutes.Me, page: () => const ProfilePage(), binding: ProfileBinding()),
     /*
     //消息
     GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
-    //我的
-    GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
+    
     //聊天详情
   */
   ];
